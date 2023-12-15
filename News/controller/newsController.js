@@ -69,13 +69,16 @@ class CrudeNews {
             newsAgancy: newsAgancy,
           },
         });
-        // return res.status(200).send(reports);
+      } else if (newsAgancy == null) {
+        return res.status(200).send(reports);
       } else if (newsAgancy == null) {
         reports = await Report.findAll({
           where: {
             createdAt: createDate,
           },
         });
+
+        return res.status(200).send(reports);
       } else {
         reports = await Report.findAll({
           where: {
